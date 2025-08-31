@@ -1,5 +1,5 @@
 # WORDLE.C — A Minimal Wordle Clone in C
-#### Video Demo:  <URL HERE>
+#### Video Demo: https://drive.google.com/file/d/1DS2L8MjthNKpvuRuWA4R7-ps9fh0-J3s/view?usp=sharing
 
 ---
 
@@ -33,9 +33,9 @@ This project demonstrates string manipulation, file I/O, randomization, terminal
 - The answer is always a five-letter word.
 - You have **six attempts**.
 - Feedback is color coded:
-  - **Red**: incorrect letter.
+  - **Grey**: incorrect letter.
   - **Green**: correct letter in the correct place.
-  - **Blue**: correct letter in the wrong place.
+  - **Yellow**: correct letter in the wrong place.
 
 The board updates after each guess, showing guesses so far. Win by guessing within six attempts; otherwise the program reveals the answer.
 
@@ -46,7 +46,7 @@ The board updates after each guess, showing guesses so far. Win by guessing with
 1. **Random answer selection**: `get_random_word()` counts lines in `selected_words.txt`, picks a random index, and returns that word.
 2. **Input handling**: Guesses are collected with `scanf("%5s", buffer)`. Extra characters are discarded.
 3. **Validation**: `word_found()` scans `all_words.txt` to confirm guesses are valid words.
-4. **Feedback**: The program first marks exact matches (green), then checks remaining letters for misplaced matches (blue). Others remain red.
+4. **Feedback**: The program first marks exact matches (green), then checks remaining letters for misplaced matches (yellow). Others remain grey.
 5. **Display**: ANSI escape codes are used to color the output. The screen clears each turn using `system("clear")` (Linux/macOS) or `system("cls")` (Windows).
 
 ---
@@ -89,7 +89,7 @@ Debug mode sets the answer manually. The word must appear in `all_words.txt`.
 
 - **ANSI colors**: Portable across modern terminals.
 - **Screen clearing**: Simple system calls (`cls`/`clear`). Could be replaced with ANSI `\033[2J\033[H`.
-- **Two-pass marking**: Greens first, then misplaced blues, avoids double-counting.
+- **Two-pass marking**: Greens first, then misplaced yellows, avoids double-counting.
 - **Static buffer**: Used in `get_random_word()` to keep return values valid.
 - **Strict dictionary check**: Ensures valid guesses only.
 
